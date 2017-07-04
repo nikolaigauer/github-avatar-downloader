@@ -30,7 +30,7 @@ function getRequestOptions(repoOwner, repoName) {
   return {
     url: 'https://api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors',
     headers: {
-      'User-Agent': 'kittenfingers'
+      'User-Agent': 'Bobby Conn'
     },
   };
 }
@@ -40,10 +40,19 @@ function getRepoContributors(repoOwner, repoName, cb) {
   request(getRequestOptions(repoOwner, repoName), function (error, response, body) {
     try {
       const data = JSON.parse(body);
-      console.log(data);
+
+      // console.log(data);
+
+       data.forEach((contributor) => {
+    console.log(contributor.avatar_url);
+      });
+
+
     } catch (err) {
       console.log('Failed to parse content body');
-    }
+        }
+
+
   });
 }
 
